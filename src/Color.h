@@ -12,6 +12,16 @@ namespace BS
 			:r(_r), g(_g), b(_b), a(_a)
 		{}
 
+		inline static Color4 black() { return Color4(0, 0, 0, 1); }
+		inline static Color4 white() { return Color4(1, 1, 1, 1); }
+
+		inline static Color4 red() { return Color4(1, 0, 0, 1); }
+		inline static Color4 green() { return Color4(0, 1, 0, 1); }
+		inline static Color4 blue() { return Color4(0, 0, 1, 1); }
+
+		inline static Color4 magenta() { return Color4(1, 0, 1, 1); }
+		inline static Color4 cyan() { return Color4(0, 1, 1, 1); }
+
 		float r, g, b, a;
 	};
 }
