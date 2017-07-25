@@ -1,4 +1,5 @@
 #include "Texture.h"
+#include <stb_image.h>
 
 BS::Texture::Texture(const char * path_)
 {
