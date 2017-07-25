@@ -38,8 +38,8 @@ int main() {
 	}
 #endif
 
-	BlueSignal::Texture image = BlueSignal::Texture("assets/ast_icon.png");
-	BlueSignal::Texture image2 = BlueSignal::Texture("assets/free.jpg");
+	BS::Texture image = BS::Texture("assets/ast_icon.png");
+	BS::Texture image2 = BS::Texture("assets/free.jpg");
 
 	glViewport(0, 0, 800, 800);
 

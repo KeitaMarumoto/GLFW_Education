@@ -1,18 +1,18 @@
 #include "Draw.h"
 
-void BlueSignal::Draw::drawPoint()
+void BS::Draw::drawPoint()
 {
 }
 
-void BlueSignal::Draw::drawLine()
+void BS::Draw::drawLine()
 {
 }
 
-void BlueSignal::Draw::drawQuad()
+void BS::Draw::drawQuad()
 {
 }
 
-void BlueSignal::Draw::drawTexture()
+void BS::Draw::drawTexture()
 {
 
 }

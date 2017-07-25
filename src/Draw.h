@@ -1,8 +1,9 @@
 #pragma once
 
+#include "Vector.h"
 #include "gl_define.h"
 
-namespace BlueSignal {
+namespace BS {
 
 static class Draw 
 {

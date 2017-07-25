@@ -1,6 +1,6 @@
 #pragma once
 
-namespace BlueSignal
+namespace BS
 {
 
 	class Vector2

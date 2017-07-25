@@ -2,7 +2,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-BlueSignal::Texture::Texture(const char * path_)
+BS::Texture::Texture(const char * path_)
 {
 	int w, h;  //ïùÇ∆çÇÇ≥
 	int comp;  //ÇRorÇS
@@ -34,17 +34,17 @@ BlueSignal::Texture::Texture(const char * path_)
 					GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 }
 
-BlueSignal::Texture::~Texture()
+BS::Texture::~Texture()
 {
 	glDeleteTextures(1, &tex_id);
 }
 
-void BlueSignal::Texture::bind()
+void BS::Texture::bind()
 {
 	glBindTexture(GL_TEXTURE_2D, tex_id);
 }
 
-void BlueSignal::Texture::unbind()
+void BS::Texture::unbind()
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }

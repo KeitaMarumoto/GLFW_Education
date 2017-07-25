@@ -3,7 +3,7 @@
 #include "gl_define.h"
 #include <iostream>
 
-namespace BlueSignal {
+namespace BS {
 	class Texture
 	{
 	public:
