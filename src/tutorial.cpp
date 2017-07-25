@@ -30,8 +30,6 @@
 #include <cstdio>
 
 int main() {
-	printf("M1911_コルトガバメント");
-
 	// 初期化
 	if (!glfwInit()) return -1;
 
@@ -60,10 +58,11 @@ int main() {
 		return -1;
 	}
 #endif
-
 	// これ以降OpenGLの命令が使える
+	glViewport(0, 0, 800, 600);
 
 	while (!glfwWindowShouldClose(window)) {
+		glOrtho(-400, 400, -300, 300, -1.0, 1.0);
 		// フレームバッファをクリア
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -76,9 +75,9 @@ int main() {
 		//
 
 		GLfloat vtx[] = { 
-			-0.5,0.5,
-			 0.5,0.5,
-			-0.5,-0.5
+			-50,50,
+			 50,50,
+			-50,-50
 		};
 
 		GLfloat color[] = {
