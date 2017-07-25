@@ -9,8 +9,6 @@
 #include "Texture.h"
 
 int main() {
-	printf("M1911_コルトガバメント\n");
-
 	// 初期化
 	if (!glfwInit()) return -1;
 
@@ -43,19 +41,19 @@ int main() {
 	BlueSignal::Texture image = BlueSignal::Texture("assets/ast_icon.png");
 	BlueSignal::Texture image2 = BlueSignal::Texture("assets/free.jpg");
 
+	glViewport(0, 0, 800, 800);
 
 	while (!glfwWindowShouldClose(window)) 
 	{
-		glLoadIdentity();
-		glOrtho(-400, 400, -400, 400, 0.1, 1.0);
+		glOrtho(-400, 400, -400, 400, -1.0, 1.0);
 
 		// フレームバッファをクリア
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glMatrixMode(GL_PROJECTION);
-
-		gluLookAt(0, 0, -5, 0, 0, 0, 0, 1, 0);
+		glLoadIdentity();
+		//gluLookAt(0, 0, -1, 0, 0, 0, 0, 1, 0);
 		//
 		// 画面更新処理はここに書く
 		//
@@ -121,10 +119,12 @@ int main() {
 
 		image.bind();
 		glDrawArrays(GL_TRIANGLES, 0, 6);
+		image.unbind();
 
 		image2.bind();
 		glDrawArrays(GL_TRIANGLES, 6, 6);
-		
+		image.unbind();
+
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
@@ -134,7 +134,6 @@ int main() {
 		glfwPollEvents();
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
-
 	glfwTerminate();
 
 	return 0;
