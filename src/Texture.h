@@ -10,8 +10,8 @@ namespace BS {
 	public:
 		Texture(const char* path_);
 		~Texture();
-		void bind();
-		void unbind();
+		void bind() const;
+		void unbind() const;
 
 	private:
 		GLuint tex_id;

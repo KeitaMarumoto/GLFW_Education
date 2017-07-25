@@ -38,12 +38,12 @@ BS::Texture::~Texture()
 	glDeleteTextures(1, &tex_id);
 }
 
-void BS::Texture::bind()
+void BS::Texture::bind() const
 {
 	glBindTexture(GL_TEXTURE_2D, tex_id);
 }
 
-void BS::Texture::unbind()
+void BS::Texture::unbind() const
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
