@@ -6,6 +6,7 @@
 #include "Draw.h"
 
 using namespace BS::Draw;
+using namespace BS;
 
 int main() {
 	// 初期化
@@ -37,118 +38,31 @@ int main() {
 	}
 #endif
 
-	BS::Texture image = BS::Texture("assets/ast_icon.png");
-	BS::Texture image2 = BS::Texture("assets/free.jpg");
+	Texture image = Texture("assets/ast_icon.png");
+	Texture image2 = Texture("assets/free.jpg");
 
 	glViewport(0, 0, 800, 800);
+	glOrtho(-400, 400, -400, 400, -1.0, 1.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 
 	while (!glfwWindowShouldClose(window)) 
 	{
-		glOrtho(-400, 400, -400, 400, -1.0, 1.0);
-
 		// フレームバッファをクリア
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		//gluLookAt(0, 0, -1, 0, 0, 0, 0, 1, 0);
-		//
-		// 画面更新処理はここに書く
-		//
-
-		GLfloat vtx[] = { 
-			-50, 50,
-			-50,-50,
-			 50, 50,
-
-			 50, 50,
-			-50,-50,
-			 50,-50,
-
-			-250, 50,
-			-250,-50,
-			-150, 50,
-
-			-150, 50,
-			-250,-50,
-			-150,-50,
-
-			 150, 50,
-			 150,-50,
-			 250, 50,
-
-			 250, 50,
-			 150,-50,
-			 250,-50
-		};
-
-		GLfloat uv[] = {
-			0.0, 0.0,
-			0.0, 1.0,
-			1.0, 0.0,
-
-			1.0, 0.0,
-			0.0, 1.0,
-			1.0, 1.0,
-
-			0.0, 0.0,
-			0.0, 1.0,
-			1.0, 0.0,
-
-			1.0, 0.0,
-			0.0, 1.0,
-			1.0, 1.0,
-
-			0.0, 0.0,
-			0.0, 1.0,
-			1.0, 0.0,
-
-			1.0, 0.0,
-			0.0, 1.0,
-			1.0, 1.0
-		};
-
-		GLfloat vtx2[] = 
+		//座標軸描画
 		{
-			-50, 50,
-			-50,-50,
-			 50, 50,
-			 50,-50
-		};
+			drawLine(Vector2(400, 0), Vector2(-400, 0), 2.0f, Color4(1, 0.4, 0.4, 1));
+			drawLine(Vector2(0, 400), Vector2(0, -400), 2.0f, Color4(0.4, 1, 0.4, 1));
+		}
 
-		GLfloat uv2[] = 
-		{
-			0.0,0.0,
-			0.0,1.0,
-			1.0,0.0,
-			1.0,1.0
-		};
-
-		//glVertexPointer(2, GL_FLOAT, 0, vtx);
-		glVertexPointer(2, GL_FLOAT, 0, vtx2);
-		//glTexCoordPointer(2, GL_FLOAT, 0, uv);
-		glTexCoordPointer(2, GL_FLOAT, 0, uv2);
-		
-		
-		glEnable(GL_TEXTURE_2D);
-
-		image.bind();
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		//glDrawArrays(GL_TRIANGLES, 0, 3);
-		//glDrawArrays(GL_TRIANGLES, 1, 3);
-		image.unbind();
-
-		image2.bind();
-		//glDrawArrays(GL_TRIANGLES, 6, 6);
-		image.unbind();
-
-		glDisableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-
-		drawPoint(BS::Vector2(50, 0), 10.0f, BS::Color4(1, 0, 0, 1));
+		drawPoint(Vector2(-200, 200), 8.0f, Color4::green());
+		drawQuad(Vector2(-200, 0), Vector2(150, 150), 1.0, Color4::cyan());
+		drawFillQuad(Vector2(-200, -200), Vector2(150, 150), Color4::magenta());
+		drawTexture(image, Vector2(0, 0), Vector2(150, 150), Color4::white());
+		drawTexture(image2, Vector2(200, 0), Vector2(150, 150), Color4::white());
 
 		// 表示画面と描画画面を入れ替える
 		glfwSwapBuffers(window);
