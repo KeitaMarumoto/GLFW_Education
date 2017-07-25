@@ -5,8 +5,13 @@
 #pragma once
 #include <cstdio>
 #include <string>
+#include "gl_define.h"
 
-#include "Texture.h"
+#ifndef STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
+#endif
+#include <stb_image.h>
+#include <iostream>
 
 int main() {
 	// 初期化
@@ -38,8 +43,71 @@ int main() {
 	}
 #endif
 
-	BS::Texture image = BS::Texture("assets/ast_icon.png");
-	BS::Texture image2 = BS::Texture("assets/free.jpg");
+	//BS::Texture image = BS::Texture("assets/ast_icon.png");
+	//BS::Texture image2 = BS::Texture("assets/free.jpg");
+
+	GLuint tex_id;
+	GLuint tex_id2;
+	{
+		int w, h;  //幅と高さ
+		int comp;  //３or４
+		unsigned char* image = stbi_load("assets/ast_icon.png", &w, &h, &comp, 0);
+
+		std::cout << "w : " << w << ", h : " << h << std::endl;
+
+		//テクスチャを作成
+		glGenTextures(1, &tex_id);
+		glBindTexture(GL_TEXTURE_2D, tex_id);
+		//テクスチャをOpenGLのメモリにコピー
+		GLint type = (comp == 3)
+			? GL_RGB
+			: GL_RGBA;
+
+		glTexImage2D(GL_TEXTURE_2D,
+					 0,                 // mipmapレベル
+					 type, w, h,        // 内部形式とサイズ
+					 0, type,           // 境界色、形式
+					 GL_UNSIGNED_BYTE,
+					 image);
+
+		//画像破棄
+		stbi_image_free(image);
+
+		glTexParameteri(GL_TEXTURE_2D,
+						GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,
+						GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	}
+	{
+		int w, h;  //幅と高さ
+		int comp;  //３or４
+		unsigned char* image = stbi_load("assets/free.jpg", &w, &h, &comp, 0);
+
+		std::cout << "w : " << w << ", h : " << h << std::endl;
+
+		//テクスチャを作成
+		glGenTextures(1, &tex_id2);
+		glBindTexture(GL_TEXTURE_2D, tex_id2);
+		//テクスチャをOpenGLのメモリにコピー
+		GLint type = (comp == 3)
+			? GL_RGB
+			: GL_RGBA;
+
+		glTexImage2D(GL_TEXTURE_2D,
+					 0,                 // mipmapレベル
+					 type, w, h,        // 内部形式とサイズ
+					 0, type,           // 境界色、形式
+					 GL_UNSIGNED_BYTE,
+					 image);
+
+		//画像破棄
+		stbi_image_free(image);
+
+		glTexParameteri(GL_TEXTURE_2D,
+						GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,
+						GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	}
 
 	glViewport(0, 0, 800, 800);
 
@@ -117,13 +185,11 @@ int main() {
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		glEnable(GL_TEXTURE_2D);
 
-		image.bind();
+		glBindTexture(GL_TEXTURE_2D, tex_id);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-		image.unbind();
 
-		image2.bind();
+		glBindTexture(GL_TEXTURE_2D, tex_id2);
 		glDrawArrays(GL_TRIANGLES, 6, 6);
-		image.unbind();
 
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
