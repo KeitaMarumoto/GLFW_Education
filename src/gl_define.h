@@ -11,9 +11,6 @@
 #endif
 #include <GLFW/glfw3.h>
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
-
 #if defined(_MSC_VER)
 // Windows:外部ライブラリのリンク指定
 #if defined (_DEBUG)
