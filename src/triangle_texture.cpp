@@ -6,10 +6,6 @@
 #include <cstdio>
 #include <string>
 #include "gl_define.h"
-
-#ifndef STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
-#endif
 #include <stb_image.h>
 #include <iostream>
 

@@ -1,12 +1,11 @@
-﻿//
-// OpenGL1.1 Tutorial
-//
-
+﻿
 #pragma once
 #include <cstdio>
 #include <string>
-
 #include "Texture.h"
+#include "Draw.h"
+
+using namespace BS::Draw;
 
 int main() {
 	// 初期化
@@ -138,8 +137,8 @@ int main() {
 		//glDrawArrays(GL_TRIANGLES, 0, 6);
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawArrays(GL_TRIANGLES, 1, 3);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDrawArrays(GL_TRIANGLES, 1, 3);
 		image.unbind();
 
 		image2.bind();
@@ -148,6 +147,8 @@ int main() {
 
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+		drawPoint(BS::Vector2(50, 0), 10.0f, BS::Color4(1, 0, 0, 1));
 
 		// 表示画面と描画画面を入れ替える
 		glfwSwapBuffers(window);
