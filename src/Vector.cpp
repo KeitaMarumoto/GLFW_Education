@@ -74,3 +74,61 @@ BS::Vector2 BS::operator/(const Vector2 & v, float s)
 {
 	return Vector2(v.x / s, v.y / s);
 }
+
+//*************************************************************************
+// Vector3
+//*************************************************************************
+
+BS::Vector3 & BS::Vector3::operator=(const Vector3 & v)
+{
+	this->x = v.x;
+	this->y = v.y;
+	this->z = v.z;
+
+	return *this;
+}
+
+BS::Vector3 BS::operator+(const Vector3 & v1, const Vector3 & v2)
+{
+	return Vector3(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+}
+
+BS::Vector3 BS::operator-(const Vector3 & v1, const Vector3 & v2)
+{
+	return Vector3(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+}
+
+float BS::operator*(const Vector3 & v1, const Vector3 & v2)
+{
+	return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+}
+
+BS::Vector3 & BS::Vector3::operator+()
+{
+	return *this;
+}
+
+BS::Vector3 & BS::Vector3::operator-()
+{
+	return Vector3(-x, -y, -z);
+}
+
+BS::Vector3 & BS::Vector3::operator+=(const Vector3 & v)
+{
+	// TODO: return ステートメントをここに挿入します
+}
+
+BS::Vector3 & BS::Vector3::operator-=(const Vector3 & v)
+{
+	// TODO: return ステートメントをここに挿入します
+}
+
+BS::Vector3 & BS::Vector3::operator*=(float s)
+{
+	// TODO: return ステートメントをここに挿入します
+}
+
+BS::Vector3 & BS::Vector3::operator/=(float s)
+{
+	// TODO: return ステートメントをここに挿入します
+}
