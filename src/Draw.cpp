@@ -115,3 +115,52 @@ void BS::Draw::drawTexture(const Texture& _texture, const Vector2& _center, cons
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 }
+
+void BS::Draw::drawCube(const Vector3 & _center, const Vector3 & _size, const Color4 _col)
+{
+	Vector3 _halfSize = _size / 2;
+
+	GLfloat vtx[] = 
+	{
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+
+		-0.5f, -0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		-0.5f,  0.5f, -0.5f,
+
+		-0.5f, -0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f,  0.5f,  0.5f,
+
+		 0.5f,  0.5f,  0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f, -0.5f,  0.5f,
+
+		-0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f, -0.5f,
+		-0.5f,  0.5f,  0.5f,
+
+		-0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f, -0.5f,
+	};
+}

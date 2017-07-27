@@ -14,5 +14,6 @@ namespace BS {
 		void drawFillQuad(const Vector2& _center, const Vector2& _size, const Color4 _col);
 		void drawQuad(const Vector2& _center, const Vector2& _size, float _line_width, const Color4 _col);
 		void drawTexture(const Texture& _texture, const Vector2& _center, const Vector2& _size, const Color4 _col);
+		void drawCube(const Vector3& _center, const Vector3& _size, const Color4 _col);
 	}
 }
