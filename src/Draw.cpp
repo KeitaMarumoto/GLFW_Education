@@ -116,51 +116,125 @@ void BS::Draw::drawTexture(const Texture& _texture, const Vector2& _center, cons
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-void BS::Draw::drawCube(const Vector3 & _center, const Vector3 & _size, const Color4 _col)
+void BS::Draw::drawCube(const Vector3 & _center, const Vector3 & _size)
 {
 	Vector3 _halfSize = _size / 2;
 
 	GLfloat vtx[] = 
 	{
+		//前
 		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
-		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
 		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
 
 		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
 		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+
+		//後
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+
+		//右
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+
+		//左
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
 		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
 
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+
+		//天井
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
 		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
-		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
-		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
 
 		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
+		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z - _halfSize.z,
+
+		//底
 		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
 		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
 
-		-0.5f, -0.5f, -0.5f,
-		 0.5f,  0.5f, -0.5f,
-		 0.5f, -0.5f, -0.5f,
-		-0.5f,  0.5f, -0.5f,
-
-		-0.5f, -0.5f,  0.5f,
-		-0.5f,  0.5f, -0.5f,
-		-0.5f, -0.5f, -0.5f,
-		-0.5f,  0.5f,  0.5f,
-
-		 0.5f,  0.5f,  0.5f,
-		 0.5f, -0.5f, -0.5f,
-		 0.5f,  0.5f, -0.5f,
-		 0.5f, -0.5f,  0.5f,
-
-		-0.5f,  0.5f, -0.5f,
-		 0.5f,  0.5f,  0.5f,
-		 0.5f,  0.5f, -0.5f,
-		-0.5f,  0.5f,  0.5f,
-
-		-0.5f, -0.5f,  0.5f,
-		 0.5f, -0.5f, -0.5f,
-		 0.5f, -0.5f,  0.5f,
-		-0.5f, -0.5f, -0.5f,
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+		_center.x + _halfSize.x, _center.y - _halfSize.y, _center.z - _halfSize.z,
+		_center.x - _halfSize.x, _center.y - _halfSize.y, _center.z + _halfSize.z,
 	};
+	glVertexPointer(3, GL_FLOAT, 0, vtx);
+
+	GLfloat normal[] = {
+		// 前
+		// x,    y,    z,
+		0.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 1.0f,
+
+		// 後
+		0.0f, 0.0f, -1.0f,
+		0.0f, 0.0f, -1.0f,
+		0.0f, 0.0f, -1.0f,
+		0.0f, 0.0f, -1.0f,
+		0.0f, 0.0f, -1.0f,
+		0.0f, 0.0f, -1.0f,
+
+		// 右
+		1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+
+		// 左
+		-1.0f, 0.0f, 0.0f,
+		-1.0f, 0.0f, 0.0f,
+		-1.0f, 0.0f, 0.0f,
+		-1.0f, 0.0f, 0.0f,
+		-1.0f, 0.0f, 0.0f,
+		-1.0f, 0.0f, 0.0f,
+
+		// 上
+		0.0f, 1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+
+		// 下
+		0.0f, -1.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+	};
+	glNormalPointer(GL_FLOAT, 0, normal);
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
 }
