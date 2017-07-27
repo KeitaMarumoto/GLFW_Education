@@ -1,4 +1,5 @@
 #pragma once
+#include "gl_define.h"
 
 namespace BS 
 {
@@ -21,6 +22,16 @@ namespace BS
 
 		inline static Color4 magenta() { return Color4(1, 0, 1, 1); }
 		inline static Color4 cyan() { return Color4(0, 1, 1, 1); }
+
+		GLfloat* toArray() 
+		{
+			GLfloat data[] =
+			{
+				r, g, b, a
+			};
+
+			return data;
+		}
 
 		float r, g, b, a;
 	};
