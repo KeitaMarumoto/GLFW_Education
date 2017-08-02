@@ -31,7 +31,6 @@
 #pragma comment(lib, "GLU32.lib")
 #endif
 
-
 int main() {
   // 初期化
   if (!glfwInit()) return -1;
