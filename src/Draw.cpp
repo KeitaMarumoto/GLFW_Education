@@ -122,6 +122,7 @@ void BS::Draw::drawCube(const Vector3 & _center, const Vector3 & _size)
 
 	GLfloat vtx[] = 
 	{
+		//”½ŽžŒv‰ñ‚è
 		//‘O
 		_center.x + _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
 		_center.x - _halfSize.x, _center.y + _halfSize.y, _center.z + _halfSize.z,
