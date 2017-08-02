@@ -14,8 +14,8 @@ namespace BS
 			:x(_x), y(_y)
 		{}
 
-		inline static float dot(const Vector2& v1, const Vector2& v2) { return v1*v2; }
-		inline static float cross(const Vector2& v1, const Vector2& v2) { return v1.x*v2.y - v1.y*v2.x; }
+		//inline static float dot(const Vector2& v1, const Vector2& v2) { return v1*v2; }
+		//inline static float cross(const Vector2& v1, const Vector2& v2) { return v1.x*v2.y - v1.y*v2.x; }
 
 		Vector2& Vector2::operator=(const Vector2& v);
 		Vector2& operator+();
@@ -49,8 +49,8 @@ namespace BS
 			:x(_x), y(_y), z(_z)
 		{}
 
-		inline static float dot(const Vector3& v1, const Vector3& v2) { return v1*v2; }
-		inline static Vector3& cross(const Vector3& v1, const Vector3& v2);
+		//inline static float dot(const Vector3& v1, const Vector3& v2) { return v1*v2; }
+		//inline static Vector3& cross(const Vector3& v1, const Vector3& v2);
 
 		Vector3& Vector3::operator=(const Vector3& v);
 		Vector3& operator+();
